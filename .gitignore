@@ -1,0 +1,16 @@
+# OneDrive / Windows
+desktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Imagens soltas na pasta que não fazem parte do jogo.
+# (Se quiser publicar alguma, mova para assets/ e remova esta linha.)
+*.png
+
+# Editores
+.vscode/
+.idea/
+*.swp

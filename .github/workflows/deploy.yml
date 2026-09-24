@@ -1,0 +1,47 @@
+name: Publicar no GitHub Pages
+
+# Publica o site sempre que algo for enviado para a branch main.
+# Como o projeto é 100% estático, não há etapa de build: o conteúdo
+# da raiz do repositório é enviado direto para o Pages.
+#
+# Na prática: editar dados/palavras.js pelo site do GitHub e clicar em
+# "Commit changes" já dispara este pipeline e republica o jogo.
+
+on:
+  push:
+    branches: [main]
+  # permite disparar manualmente em Actions -> Publicar no GitHub Pages -> Run workflow
+  workflow_dispatch:
+
+# Permissões mínimas exigidas pelo deploy oficial do Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Se dois commits chegarem juntos, cancela a publicação antiga e usa a mais nova
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empacotar o site (raiz do repositório)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar
+        id: deploy
+        uses: actions/deploy-pages@v4

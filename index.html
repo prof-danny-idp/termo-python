@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Jogo de adivinhar palavras com temática de Python — Data Science I / IDP">
+<meta name="theme-color" content="#6e5c62">
+<title>Termo Python</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+<link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<header class="topo">
+  <button class="icone" id="btn-ajuda" title="Como jogar" aria-label="Como jogar">?</button>
+  <div class="marca">
+    <h1>TERMO <span>PYTHON</span></h1>
+    <p id="legenda-topo">Data Science I — IDP</p>
+  </div>
+  <div class="topo-dir">
+    <button class="icone" id="btn-stats" title="Estatísticas" aria-label="Estatísticas">📊</button>
+  </div>
+</header>
+
+<nav class="modos" role="tablist">
+  <button class="modo-btn ativo" data-modo="solo" role="tab">1 palavra</button>
+  <button class="modo-btn" data-modo="duetto" role="tab">DUETTO — 2 palavras</button>
+</nav>
+
+<main>
+  <div id="tabuleiros" class="tabuleiros"></div>
+
+  <div class="barra-dica">
+    <button id="btn-dica" class="btn-secundario">💡 Dica</button>
+    <span id="texto-dica" class="texto-dica"></span>
+  </div>
+
+  <div id="teclado" class="teclado"></div>
+</main>
+
+<div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+
+<!-- ============ MODAL: COMO JOGAR ============ -->
+<div class="modal-fundo" id="modal-ajuda" hidden>
+  <div class="modal">
+    <button class="fechar" data-fechar>×</button>
+    <h2>Como jogar</h2>
+    <p>Descubra a palavra de <b>5 letras</b> do dia. Todas as palavras têm
+       relação com <b>Python</b>, programação ou ciência de dados.</p>
+    <p>Depois de cada tentativa, as cores mostram o quanto você chegou perto:</p>
+
+    <div class="exemplo">
+      <div class="cel certa">L</div><div class="cel">A</div><div class="cel">Ç</div><div class="cel">O</div><div class="cel">S</div>
+    </div>
+    <p>A letra <b>L</b> existe na palavra e está <b>na posição certa</b>.</p>
+
+    <div class="exemplo">
+      <div class="cel">T</div><div class="cel posicao">U</div><div class="cel">P</div><div class="cel">L</div><div class="cel">A</div>
+    </div>
+    <p>A letra <b>U</b> existe na palavra, mas <b>em outra posição</b>.</p>
+
+    <div class="exemplo">
+      <div class="cel">P</div><div class="cel">R</div><div class="cel ausente">I</div><div class="cel">N</div><div class="cel">T</div>
+    </div>
+    <p>A letra <b>I</b> <b>não existe</b> na palavra.</p>
+
+    <h3>Acentos</h3>
+    <p>Digite sem acento. Se a letra estiver na posição certa, o jogo
+       revela o acento automaticamente.</p>
+
+    <h3>Modo DUETTO</h3>
+    <p>Duas palavras diferentes ao mesmo tempo, com <b>7 tentativas</b>.
+       Cada palpite é enviado para os dois tabuleiros de uma vez.</p>
+
+    <p class="rodape-modal">Uma palavra nova por dia. 🐍</p>
+  </div>
+</div>
+
+<!-- ============ MODAL: ESTATÍSTICAS / FIM DE JOGO ============ -->
+<div class="modal-fundo" id="modal-stats" hidden>
+  <div class="modal">
+    <button class="fechar" data-fechar>×</button>
+    <h2 id="stats-titulo">Estatísticas</h2>
+    <div id="stats-resultado" class="stats-resultado"></div>
+
+    <div class="stats-numeros">
+      <div><b id="st-jogos">0</b><span>jogos</span></div>
+      <div><b id="st-vitorias">0</b><span>vitórias</span></div>
+      <div><b id="st-taxa">0%</b><span>aproveit.</span></div>
+      <div><b id="st-seq">0</b><span>sequência</span></div>
+      <div><b id="st-melhor">0</b><span>melhor seq.</span></div>
+    </div>
+
+    <h3>Distribuição</h3>
+    <div id="stats-dist" class="dist"></div>
+
+    <button id="btn-compartilhar" class="btn-primario">Compartilhar resultado</button>
+  </div>
+</div>
+
+<footer class="rodape">
+  <span id="rodape-info"></span>
+</footer>
+
+<script src="dados/palavras.js"></script>
+<script src="dados/dicionario.js"></script>
+<script src="assets/jogo.js"></script>
+</body>
+</html>
