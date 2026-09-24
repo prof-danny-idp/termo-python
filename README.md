@@ -7,7 +7,8 @@ Data Science I — IDP.
 - **1 palavra** — 6 tentativas
 - **DUETTO** — 2 palavras ao mesmo tempo, 7 tentativas
 - Uma palavra nova por dia, definida pelo professor
-- Botão de **dica** com a explicação do conceito
+- Botão de **dica** que não dá dica nenhuma (é de propósito)
+- Tela de vitória com foto de prêmio
 - Estatísticas e compartilhamento do resultado em emojis
 - 100% estático (HTML + CSS + JS), sem build, sem dependências
 
@@ -19,8 +20,9 @@ Data Science I — IDP.
 termo-python/
 ├── index.html            página do jogo
 ├── assets/
-│   ├── estilo.css        aparência
-│   └── jogo.js           lógica (não precisa mexer)
+│   ├── estilo.css                aparência
+│   ├── jogo.js                   lógica (não precisa mexer)
+│   └── wagner_moura_python.png   foto exibida na tela de vitória
 ├── dados/
 │   ├── palavras.js   ←   ARQUIVO DE AMBIENTE: as palavras de cada dia
 │   └── dicionario.js ←   palavras aceitas como palpite
@@ -57,7 +59,10 @@ Regras:
 - A palavra tem **exatamente 5 letras**.
 - Pode ter acento (`'LAÇOS'`, `'ÍNDEX'`). O aluno digita sem acento e o jogo
   revela o acento quando a letra cai na posição certa.
-- `dica` é opcional, mas é o que aparece no botão 💡.
+- `dica` está desativada hoje: o botão 💡 sempre responde
+  *"Cara tu ainda quer dica? Que moleza."* Os textos continuam no arquivo
+  caso você queira religar as dicas — nesse caso, edite `mostrarDica()`
+  em `assets/jogo.js`.
 - Se a palavra não estiver no `dicionario.js`, tudo bem — a resposta do dia é
   sempre aceita automaticamente. Mas vale acrescentá-la ao dicionário para que
   ela também possa ser usada como palpite em outros dias.

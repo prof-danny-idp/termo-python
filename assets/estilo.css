@@ -327,6 +327,28 @@ main {
   margin-bottom: 14px;
   color: var(--texto-fraco);
 }
+.stats-resultado .elogio {
+  color: var(--python-ouro);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.stats-resultado .foto-premio {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid var(--certa);
+}
+
+.stats-resultado .sub-elogio {
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
 .stats-resultado .palavra-revelada {
   display: inline-block;
   background: var(--certa);

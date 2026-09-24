@@ -6,9 +6,10 @@ $RECYCLE.BIN/
 # macOS
 .DS_Store
 
-# Imagens soltas na pasta que não fazem parte do jogo.
-# (Se quiser publicar alguma, mova para assets/ e remova esta linha.)
-*.png
+# Imagens soltas na raiz não fazem parte do jogo.
+# As imagens usadas pelo jogo ficam em assets/ e essas sim vão para o repositório.
+/*.png
+/*.jpg
 
 # Editores
 .vscode/

@@ -17,8 +17,10 @@
      - SEMPRE 5 letras.
      - Pode escrever com acento (ex.: "LAÇOS", "ÍNDEX"). O jogo aceita
        a digitação sem acento e revela o acento quando a letra acerta.
-     - "dica" é opcional, mas recomendado: é o texto que aparece
-       quando o aluno clica no botão "Dica".
+     - "dica" está DESLIGADA no momento: o botão 💡 responde sempre
+       "Cara tu ainda quer dica? Que moleza." Os textos abaixo ficam
+       guardados caso você queira reativar as dicas de verdade um dia
+       (é só mexer em RESPOSTA_DICA / mostrarDica em assets/jogo.js).
 
    Se uma data não estiver na lista abaixo, o jogo sorteia
    automaticamente uma palavra da RESERVA (no final do arquivo),

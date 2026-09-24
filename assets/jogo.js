@@ -496,31 +496,28 @@
 
     const res = $('stats-resultado');
     if (resultado === 'vitoria') {
-      $('stats-titulo').textContent = 'Você acertou! 🐍';
-      res.innerHTML = 'Em <b>' + tentativas.length + '</b> tentativa' +
-        (tentativas.length > 1 ? 's' : '') + '.<br>' + htmlDicas();
+      $('stats-titulo').textContent = 'Parabéns!!! 🐍';
+      res.innerHTML =
+        '<p class="elogio">Parabéns!!! Você é melhor que o Wagner Moura ' +
+        'programando em Python.</p>' +
+        '<img class="foto-premio" src="assets/wagner_moura_python.png" ' +
+        'alt="Foto de um programador trabalhando em Python">' +
+        '<p class="sub-elogio">Acertou em <b>' + tentativas.length + '</b> tentativa' +
+        (tentativas.length > 1 ? 's' : '') + '.</p>';
     } else if (resultado === 'derrota') {
       $('stats-titulo').textContent = 'Fim de jogo';
       res.innerHTML = 'A palavra ' + (alvos.length > 1 ? 'do dia era' : 'era') + ':<br>' +
         alvos.map(function (a) {
           return '<span class="palavra-revelada">' + a.original + '</span>';
-        }).join('') + '<br>' + htmlDicas();
+        }).join('');
     } else {
       $('stats-titulo').textContent = 'Estatísticas';
-      res.innerHTML = fim ? htmlDicas() :
+      res.innerHTML =
         '<span style="opacity:.7">Modo ' + (modo === 'duetto' ? 'DUETTO' : '1 palavra') +
         ' — puzzle #' + NUMERO_PUZZLE + '</span>';
     }
 
     $('btn-compartilhar').style.display = fim ? 'block' : 'none';
-  }
-
-  function htmlDicas() {
-    if (!fim) return '';
-    return '<div style="margin-top:10px;font-size:12.5px;text-align:left">' +
-      alvos.map(function (a) {
-        return '<div style="margin:6px 0"><b>' + a.original + '</b> — ' + a.dica + '</div>';
-      }).join('') + '</div>';
   }
 
   /* ------------------------------------------------------------------
@@ -589,13 +586,11 @@
     mostrarDica();
   });
 
+  // As dicas de verdade estão desligadas: o botão só devolve a zoeira.
+  const RESPOSTA_DICA = 'Cara tu ainda quer dica? Que moleza.';
+
   function mostrarDica() {
-    const el = $('texto-dica');
-    if (!dicaAberta) { el.innerHTML = ''; return; }
-    el.innerHTML = alvos.map(function (a, i) {
-      const rot = alvos.length > 1 ? '<span class="rotulo">Palavra ' + (i + 1) + ':</span> ' : '';
-      return rot + a.dica;
-    }).join('<br>');
+    $('texto-dica').textContent = dicaAberta ? RESPOSTA_DICA : '';
   }
 
   /* ------------------------------------------------------------------
